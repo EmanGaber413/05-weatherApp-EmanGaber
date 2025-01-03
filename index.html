@@ -1,12 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eman Weather APP</title>
+  <link rel="stylesheet" href="./fontawesome-free-6.6.0-web/css/all.min.css">
+  <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./weatherApp.css">
+
 </head>
+
 <body>
-    
+
+  <nav class="navbar navbar-expand-lg navbar-dark  grayDark z-1" style="height: 85px;">
+    <div class="container-fluid  ">
+
+     
+        <a class="navbar-brand p-3 container col-md-5 " href="#">
+        <img src="./imges/output-onlinepngtools.png" alt="Logo" width="70" height="40" class="  position-absolute "
+          style="top: 20px; left: 90px;"> </a>
+          <button class="navbar-toggler" type="button"
+           data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" 
+           aria-controls="navbarNavAltMarkup" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+      <div class=" col-md-7 row collapse navbar-collapse grayDark" id="navbarNavAltMarkup">
+
+
+
+        <ul class=" navbar-nav d-flex ps-3  text-start justify-content-between " >
+
+          <li class="nav-item">
+            <a class="nav-link active list gray fs-5 fw-bold selectedFormate " href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link list gray fs-5 fw-bold selectedFormate" href="#">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link list gray fs-5 fw-bold selectedFormate" href="#">Livecamera</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link list gray fs-5 fw-bold selectedFormate " href="#">Photos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link list gray fs-5 fw-bold selectedFormate " href="#">Contact</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link list gray fs-5 fw-bold ps-3 " href="#">
+            <div class="form-check form-switch ">
+              <input class="form-check-input fs-3 " style="left: 96%;" type="checkbox" role="switch"
+                id="flexSwitchCheckChecked" checked>
+            </div>
+          </a>
+          </li>
+
+        </ul>
+
+        
+      </div>
+    </div>
+  </nav>
+  <!-- search part -->
+  <div>
+    <div class="searchBar  backGround position-relative  ">
+      <input type="text" class="position-absolute grayDark  translate-middle-x start-50  border-0 rounded-5 p-4 "
+        style="height: 60px; width:80% ;  top:25%  ;" placeholder="find your location...">
+    </div>
+  </div>
+  <!-- head part -->
+  <div class="position-absolute translate-middle-x start-50 row g-0 " style=" width:80% ; top:46%; background-color: rgb(160, 120, 120);">
+    <div id="showTitle">
+
+      <!-- <div class="  justify-content-between  w-100 " style="height: 50px; width: 100%;  background-color: rgb(60, 156, 36);">
+        <h4 class=" gray col-3  ">day</h4>
+        <h4 class=" gray col-2  end-0 ">date</h4>
+      </div> -->
+    </div>
+    <!-- part 1 -->
+    <div class="row g-0  blue " style="width: 100%; overflow-x: hidden;  ">
+      <div class="   blue row col-md-5 col-sm-12 " id="showText" style="height: 300px;  ">
+
+        <!-- <div class="right-part col-4">
+          <h1 class=" gray ">gov</h1>
+          <h4 class=" gray ">gov</h4>
+
+          <p class="fs-1 gray fw-bolder col-6">degree</p>
+          <img src="" alt="">
+          <p class="fs-5  text-info">sunny</p>
+          <div class="details  row">
+            <p class="fs-5  col-4 text-secondary">hhh</p>
+            <p class="fs-5  col-4 text-secondary">hhh</p>
+            <p class="fs-5  col-4 text-secondary">hhh</p>
+          </div>
+        </div> -->
+      </div>
+      <!-- slider -->
+
+      <div class=" blue col-md-7 row text-light pt-5 p-sm-5" id="showSlider" style= "height: 350px;">
+
+       
+      
+
+        
+    </div>
+    <!-- part2 -->
+
+    <div class="row g-0" 
+    style="background-color: rgb(27, 17, 3);"
+     id="forecast3days">
+
+      <!-- <div class=" content  blue  col-4 row g-0 text-center  " style="height: 280px;   ">
+
+        <div class="grayDark col-12 "> 
+          <h4 class="   fs-2 text-center text-light ">date</h4>
+        </div>
+        <img src="" alt="">
+        <h4 class=" gray ">degree</h4>
+        <p class="fs-1 gray fw-bolder">runnig</p>
+        <p class="fs-5  text-info">sunny</p>
+      </div>
+
+
+      <div class=" content  grayDark  col-4  row g-0 text-center" style="height: 280px;  ">
+
+        <div class="blue col-12 ">
+          <h4 class="   fs-2 text-center text-light ">date</h4>
+        </div>
+        <img src="" alt="">
+        <h4 class=" gray ">degree</h4>
+        <p class="fs-1 gray fw-bolder">runnig</p>
+        <p class="fs-5  text-info">sunny</p>
+      </div>
+
+
+      <div class=" content  blue  col-4 row g-0 text-center" style="height: 280px;  ">
+
+        <div class="grayDark col-12 ">
+          <h4 class="   fs-2 text-center text-light ">date</h4>
+        </div>
+        <img src="" alt="">
+        <h4 class=" gray ">degree</h4>
+        <p class="fs-1 gray fw-bolder">runnig</p>
+        <p class="fs-5  text-info">sunny</p>
+      </div> -->
+
+
+    </div>
+
+  </div>
+
+
+  <div class="grayDark " style="height: 900px;"></div>
 
 
 
@@ -19,6 +167,11 @@
 
 
 
-    <script src="./weatherApp.js"></script>
+
+  <script src="./weatherApp.js"></script>
+  <script src="./bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./fontawesome-free-6.6.0-web/js/all.min.js"></script>
+
 </body>
+
 </html>

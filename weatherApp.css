@@ -1,0 +1,64 @@
+.list{
+    text-decoration: none;
+    list-style: none;
+   
+}
+
+.gray{
+    color:rgb(233, 235, 250)!important;
+}
+.grayDark{
+    background-color:rgb(30, 32, 43);
+}
+.backGround{background-image: url(./imges/banner.png);
+width: 100%;
+height: 350px;
+background-repeat: no-repeat;
+background-size:cover;
+}
+.blue{
+    background-color: rgb(16, 19, 34);
+}
+.selectedFormate:hover {
+    border: 3px,solid,rgb(80, 80, 201);
+    border-radius: 30px;
+    padding: 10px;
+    color: rgb(85, 85, 243);
+}
+
+/* let dayForecast=posts.forecast.forecastday
+    dayForecast.forEach((day) => {
+
+    `<div class=" content  blue  col-4 row g-0 text-center  " style="height: 280px;   ">
+
+    <div class="grayDark col-12 "> 
+      <h4 class="   fs-2 text-center text-light ">${day.date}</h4>
+    </div>
+    <img src="${day.condition.icon}" alt="">
+    <h4 class=" gray ">${day.day.maxtemp_c}</h4>
+    <p class="fs-1 gray fw-bolder">runnig</p>
+    <p class="fs-5  text-info">${day.condition.text}</p>
+  </div>` */
+
+
+ 
+
+
+
+
+    /* })
+
+
+
+    document.querySelector("#forecast3days").innerHTML = carouselContent; */
+
+    /* .temperature {
+        position: relative;
+        z-index: 1;
+      }
+      
+      .weather-icon {
+        position: relative;
+        z-index: 0;
+      } */
+      
