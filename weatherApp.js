@@ -51,24 +51,32 @@ document.querySelector("#showText").innerHTML=htmlcollection2;
  // slider
 
     let hourForecast=posts.forecast.forecastday[0].hour;
-    let carouselContent = ``;
-    hourForecast.forEach((hour,index) => {
-      let time = new Date(hour.time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-
-      carouselContent += `
-    <div id="carouselExample" class="carousel slide">
+    let carouselContent = ` <div id="carouselExample" class="carousel slide">
 
   <div class="carousel-inner">
-    <div class="carousel-item active">
+`;
+
+    hourForecast.forEach((hour,index) => {
+      let time = new Date(hour.time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+      if (index%4===0) {
+        if (index>0 ) carouselContent += `</div> </div>
+        <div class=" carousel-item ${index===0?'active':""}">
+         <div class="row text-center" >`
+      }
+
+      carouselContent += `
+      
+   
       <div class="col-3">
           <h5>${time}</h5>
           <img src="${hour.condition.icon}" alt="Weather Icon" width="50" height="50">
           <h4>${hour.temp_c}°C</h4>
           <p>${hour.condition.text}</p>
         </div>
-    </div>
+    `
 
-   
+  });
+   carouselContent += `
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -80,7 +88,6 @@ document.querySelector("#showText").innerHTML=htmlcollection2;
   </button>
 </div>`
 
-});
 document.querySelector("#showSlider").innerHTML = carouselContent;
 
 // forecast3Day
