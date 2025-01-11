@@ -47,45 +47,50 @@ let htmlcollection2= `
   </div>
 `
 document.querySelector("#showText").innerHTML=htmlcollection2;
-
  // slider
 
     let hourForecast=posts.forecast.forecastday[0].hour;
     let carouselContent = ` <div id="carouselExample" class="carousel slide">
 
   <div class="carousel-inner">
+  
 `;
+      
 
     hourForecast.forEach((hour,index) => {
       let time = new Date(hour.time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-      if (index%4===0) {
-        if (index>0 ) carouselContent += `</div> </div>
-        <div class=" carousel-item ${index===0?'active':""}">
-         <div class="row text-center" >`
-      }
+      if  (index===0) {
+        carouselContent += `
+        <div class=" carousel-item active"><div class="row text-center">`;}
 
-      carouselContent += `
+      else if (index % 4 === 0 ) { carouselContent += `</div> </div>
+        <div class=" carousel-item "><div class="row text-center">`;}
+ 
       
-   
-      <div class="col-3">
-          <h5>${time}</h5>
-          <img src="${hour.condition.icon}" alt="Weather Icon" width="50" height="50">
-          <h4>${hour.temp_c}°C</h4>
-          <p>${hour.condition.text}</p>
-        </div>
-    `
-
-  });
-   carouselContent += `
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+      {
+          carouselContent += `
+        <div class="col-3">
+            <h5>${time}</h5>
+            <img src="${hour.condition.icon}" alt="Weather Icon" width="50" height="50">
+            <h4>${hour.temp_c}°C</h4>
+            <p>${hour.condition.text}</p>
+          </div>`;
+          
+        }
+      })
+        
+      
+carouselContent += `
+</div></div>
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Next</span>
+</button>
 </div>`
 
 document.querySelector("#showSlider").innerHTML = carouselContent;
@@ -93,21 +98,49 @@ document.querySelector("#showSlider").innerHTML = carouselContent;
 // forecast3Day
 
 
-let bodyElement = document.querySelector("body")
+let dayspart2 = document.querySelector(".dayspart2")
+let divWithRow =document.createElement("div")
+divWithRow.classList.add("row","blue","p-3")
+
+
+
+
+let carousel3days = posts.forecast.forecastday
+
+
+  carousel3days.forEach((day,index)=> {
+    
 let forecast3DaysDiv=document.createElement("div")
-forecast3DaysDiv.classList.add("blue")
+forecast3DaysDiv.classList.add("grayDark", "text-light" ,"col-4","text-center","p-3")
+
 let date3Days =document.createElement("h4")
-date3Days.innerText=posts.forecast.forecastday[0].Date
+date3Days.innerText=`Date : ${posts.forecast.forecastday[index].date}`
+
 let icon3Days =document.createElement("img")
-icon3Days.innerText=posts.forecast.forecastday[0].day.icon
+icon3Days.src=posts.forecast.forecastday[index].day.condition.icon
+
 let degree3Days=document.createElement("h4")
-degree3Days.innerText=posts.forecast.forecastday[0].day.avgtemp_c
+degree3Days.innerText=`${posts.forecast.forecastday[index].day.avgtemp_c} °C`;
+
 let running3Days=document.createElement("h4")
-running3Days.innerText=posts.forecast.forecastday[0].daily_chance_of_rain
-
-bodyElement.insertAdjacentElement("afterbegin",forecast3DaysDiv)
+running3Days.innerText=` Rain Percentage: ${posts.forecast.forecastday[index].day.daily_chance_of_rain}%`
 
 
+
+forecast3DaysDiv.appendChild(date3Days)
+forecast3DaysDiv.appendChild(icon3Days)
+
+forecast3DaysDiv.appendChild(degree3Days)
+
+forecast3DaysDiv.appendChild(running3Days)
+
+
+
+divWithRow.appendChild(forecast3DaysDiv)
+
+})
+
+dayspart2.insertAdjacentElement("afterbegin",divWithRow)
 
 
 
