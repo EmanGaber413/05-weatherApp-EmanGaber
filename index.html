@@ -13,7 +13,7 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark  grayDark z-1" style="height: 85px;">
+  <nav class="navbar navbar-expand-lg   grayDark z-1" style="height: 85px;">
     <div class="container-fluid  ">
 
      
@@ -27,14 +27,14 @@
             <span class="navbar-toggler-icon"></span>
           </button>
 
-      <div class=" col-md-7 row collapse navbar-collapse grayDark" id="navbarNavAltMarkup">
+      <div class=" col-md-7 row collapse navbar-collapse " id="navbarNavAltMarkup">
 
 
 
-        <ul class=" navbar-nav d-flex ps-3  text-start justify-content-between " >
+        <ul class=" navbar-nav d-flex ps-3  text-start justify-content-between  " >
 
           <li class="nav-item">
-            <a class="nav-link active list gray fs-5 fw-bold selectedFormate " href="#">Home</a>
+            <a class="nav-link active list gray fs-5 fw-bold selectedFormate " href="#" >Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link list gray fs-5 fw-bold selectedFormate" href="#">News</a>
@@ -50,8 +50,8 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link list gray fs-5 fw-bold ps-3 " href="#">
-            <div class="form-check form-switch ">
+            <a class="nav-link  " href="#">
+            <div class="form-check form-switch toggle " id="flexSwitchCheckChecked">
               <input class="form-check-input fs-3 " style="left: 96%;" type="checkbox" role="switch"
                 id="flexSwitchCheckChecked" checked>
             </div>
@@ -68,16 +68,16 @@
   <div>
     <div class="searchBar  backGround position-relative  ">
 
-      <div class="grayDark position-relative z-n1  w-100 "
+      <div class="grayBackGround grayDark position-relative z-n1  w-100 "
    style="height: 1200px; width: 100%!important;">
       <input type="text" class="position-absolute 
-       grayDark  translate-middle-x start-50  border-0 rounded-5 p-4 "
-        style="height: 60px; width:80% ;  top:25% ;" placeholder="find your location...">
+      grayBackGround  translate-middle-x start-50  border-0 rounded-5 p-4 "
+        style="height: 60px; width:80% ; height: 50px!important;  top:10%  ; z-index: 1000;" placeholder="find your location...">
     </div>
   </div>
   <!-- head part -->
   <div class="position-absolute translate-middle-x start-50 row g-0 "
-   style=" width:80% ; top:46%; background-color: rgb(160, 120, 120);">
+   style=" width:80% ; top:46%;">
     <div id="showTitle">
 
       <!-- <div class="  justify-content-between  w-100 " style="height: 50px; width: 100%;  background-color: rgb(60, 156, 36);">
@@ -86,8 +86,8 @@
       </div> -->
     </div>
     <!-- part 1 -->
-    <div class="row g-0  blue " style="width: 100%; overflow-x: hidden;  ">
-      <div class="   blue row col-md-5 col-sm-12 " id="showText" style="height: 300px;  ">
+    <div class="row g-0  blue blueBackGround" style="width: 100%; overflow-x: hidden;  ">
+      <div class=" blueBackGround  blue row col-md-5 col-sm-12 " id="showText" style="height: 300px;  ">
 
         <!-- <div class="right-part col-4">
           <h1 class=" gray ">gov</h1>
@@ -105,7 +105,7 @@
       </div>
       <!-- slider -->
 
-      <div class=" blue col-md-7 row text-light pt-5  text-center  p-0 g-0 m-0"
+      <div class=" blue blueBackGround col-md-7 row text-light pt-5  text-center  p-0 g-0 m-0"
        id="showSlider" style= "height: 400px;">
 
        

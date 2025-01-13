@@ -1,26 +1,31 @@
-
-fetch ( "http://api.weatherapi.com/v1/forecast.json?key=e5b88cfc6deb4446b4c111428242412&q=alex&days=3&aqi=no&alerts=no")
-.then (function (text) {return text.json()
-
-})
-.then (function (posts) {  
-
+fetch(
+  "http://api.weatherapi.com/v1/forecast.json?key=e5b88cfc6deb4446b4c111428242412&q=alex&days=3&aqi=no&alerts=no"
+)
+  .then(function (text) {
+    return text.json();
+  })
+  .then(function (posts) {
     let localDate = new Date(posts.location.localtime);
-    let daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let dayName = daysOfWeek[localDate.getDay()]; 
+    let daysOfWeek = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    let dayName = daysOfWeek[localDate.getDay()];
 
-    let htmlcollection= ` 
-    <div class=" grayDark row justify-content-between g-0 px-3" style="height: 60px; width: 100%; ">
-  <h4 class=" gray col-3 pt-2  "> ${dayName}</h4>
-  <h4 class=" gray col-lg-2 col-4 pe-sm-0 end-0 pt-2 ">${posts.location.localtime}</h4>
-</div>`
-document.querySelector("#showTitle").innerHTML=htmlcollection;
+    let htmlcollection = ` 
+    <div class="grayBackGround grayDark row justify-content-between g-0 px-3" style="height: 60px; width: 100%; ">
+  <h4 class=" gray col-3 pt-2 grayBackGround  p-3 "> ${dayName}</h4>
+  <h4 class=" gray col-lg-3 col-4 pe-0 end-0 pt-2 grayBackGround me-0">${posts.location.localtime}</h4>
+</div>`;
+    document.querySelector("#showTitle").innerHTML = htmlcollection;
 
-
-
-
-let htmlcollection2= ` 
-<div class=" content  blue  " style="height: 320px; overflow: hidden;" ">
+    let htmlcollection2 = ` 
+<div class=" content  blue  blueBackGround" style="height: 320px; overflow: hidden;" ">
 
  <div class="right-part  ps-4" style="overflow: hidden;">
     <h1 class=" gray ">${posts.location.name}</h1>
@@ -45,42 +50,42 @@ let htmlcollection2= `
     </div>
   </div>
   </div>
-`
-document.querySelector("#showText").innerHTML=htmlcollection2;
- // slider
+`;
+    document.querySelector("#showText").innerHTML = htmlcollection2;
+    // slider
 
-    let hourForecast=posts.forecast.forecastday[0].hour;
+    let hourForecast = posts.forecast.forecastday[0].hour;
     let carouselContent = ` <div id="carouselExample" class="carousel slide">
 
   <div class="carousel-inner">
   
 `;
-      
 
-    hourForecast.forEach((hour,index) => {
-      let time = new Date(hour.time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-      if  (index===0) {
+    hourForecast.forEach((hour, index) => {
+      let time = new Date(hour.time).toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+      if (index === 0) {
         carouselContent += `
-        <div class=" carousel-item active"><div class="row text-center">`;}
+        <div class=" carousel-item active"><div class="row text-center">`;
+      } else if (index % 4 === 0) {
+        carouselContent += `</div> </div>
+        <div class=" carousel-item "><div class="row text-center">`;
+      }
 
-      else if (index % 4 === 0 ) { carouselContent += `</div> </div>
-        <div class=" carousel-item "><div class="row text-center">`;}
- 
-      
       {
-          carouselContent += `
+        carouselContent += `
         <div class="col-3">
             <h5>${time}</h5>
             <img src="${hour.condition.icon}" alt="Weather Icon" width="50" height="50">
             <h4>${hour.temp_c}°C</h4>
             <p>${hour.condition.text}</p>
           </div>`;
-          
-        }
-      })
-        
-      
-carouselContent += `
+      }
+    });
+
+    carouselContent += `
 </div></div>
 </div>
 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -91,76 +96,76 @@ carouselContent += `
   <span class="carousel-control-next-icon" aria-hidden="true"></span>
   <span class="visually-hidden">Next</span>
 </button>
-</div>`
+</div>`;
 
-document.querySelector("#showSlider").innerHTML = carouselContent;
+    document.querySelector("#showSlider").innerHTML = carouselContent;
 
-// forecast3Day
+    // forecast3Day
 
+    let dayspart2 = document.querySelector(".dayspart2");
+    let divWithRow = document.createElement("div");
+    divWithRow.classList.add("row", "blue", "p-3", "blueBackGround");
 
-let dayspart2 = document.querySelector(".dayspart2")
-let divWithRow =document.createElement("div")
-divWithRow.classList.add("row","blue","p-3")
+    let carousel3days = posts.forecast.forecastday;
 
+    carousel3days.forEach((day, index) => {
+      let forecast3DaysDiv = document.createElement("div");
+      forecast3DaysDiv.classList.add(
+        "grayDark",
+        "grayBackGround",
+        "text-light",
+        "col-4",
+        "text-center",
+        "p-3"
+      );
 
+      let date3Days = document.createElement("h4");
+      date3Days.innerText = `Date : ${posts.forecast.forecastday[index].date}`;
 
+      let icon3Days = document.createElement("img");
+      icon3Days.src = posts.forecast.forecastday[index].day.condition.icon;
 
-let carousel3days = posts.forecast.forecastday
+      let degree3Days = document.createElement("h4");
+      degree3Days.innerText = `${posts.forecast.forecastday[index].day.avgtemp_c} °C`;
 
+      let running3Days = document.createElement("h4");
+      running3Days.innerText = ` Rain Percentage: ${posts.forecast.forecastday[index].day.daily_chance_of_rain}%`;
 
-  carousel3days.forEach((day,index)=> {
-    
-let forecast3DaysDiv=document.createElement("div")
-forecast3DaysDiv.classList.add("grayDark", "text-light" ,"col-4","text-center","p-3")
+      forecast3DaysDiv.appendChild(date3Days);
+      forecast3DaysDiv.appendChild(icon3Days);
 
-let date3Days =document.createElement("h4")
-date3Days.innerText=`Date : ${posts.forecast.forecastday[index].date}`
+      forecast3DaysDiv.appendChild(degree3Days);
 
-let icon3Days =document.createElement("img")
-icon3Days.src=posts.forecast.forecastday[index].day.condition.icon
+      forecast3DaysDiv.appendChild(running3Days);
 
-let degree3Days=document.createElement("h4")
-degree3Days.innerText=`${posts.forecast.forecastday[index].day.avgtemp_c} °C`;
+      divWithRow.appendChild(forecast3DaysDiv);
+    });
 
-let running3Days=document.createElement("h4")
-running3Days.innerText=` Rain Percentage: ${posts.forecast.forecastday[index].day.daily_chance_of_rain}%`
+    dayspart2.insertAdjacentElement("afterbegin", divWithRow);
+  })
+  .then(function () {
+    let grayGround = document.querySelectorAll(".grayBackGround");
+    let blueGround = document.querySelectorAll(".blueBackGround");
+    let nav = document.querySelector("nav");
+    let navtext = document.querySelectorAll(".list");
+    let toggleBtn = document.querySelector("#flexSwitchCheckChecked");
 
+    document.addEventListener("readystatechange", function () {
+      if (document.readyState === "complete") {
+        toggleBtn.addEventListener("change", (e) => {
+          navtext.forEach((item) => {
+            item.classList.toggle("brown-text");
+          });
+          nav.classList.toggle("yellow-theme");
 
-
-forecast3DaysDiv.appendChild(date3Days)
-forecast3DaysDiv.appendChild(icon3Days)
-
-forecast3DaysDiv.appendChild(degree3Days)
-
-forecast3DaysDiv.appendChild(running3Days)
-
-
-
-divWithRow.appendChild(forecast3DaysDiv)
-
-})
-
-dayspart2.insertAdjacentElement("afterbegin",divWithRow)
-
-
-
-
-
-
-
-
-
+          grayGround.forEach((item1) => {
+            item1.classList.toggle("brown-text");
+            item1.classList.toggle("yellow-theme");
+          });
+          blueGround.forEach((item) => {
+            item.classList.toggle("brown-theme");
+          });
+        });
+      }
+    });
   });
-      
-
-    
-
-
-
-
-
-
-  
-
-
-
