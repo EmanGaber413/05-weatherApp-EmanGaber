@@ -114,9 +114,11 @@ fetch(
         "grayDark",
         "grayBackGround",
         "text-light",
-        "col-4",
+        "col-12",
         "text-center",
-        "p-3"
+        "p-3",
+        "col-md-4",
+        "border-bottom"
       );
 
       let date3Days = document.createElement("h4");
