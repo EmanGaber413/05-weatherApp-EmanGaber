@@ -1,5 +1,5 @@
 fetch(
-  "http://api.weatherapi.com/v1/forecast.json?key=e5b88cfc6deb4446b4c111428242412&q=alex&days=3&aqi=no&alerts=no"
+  "https://api.weatherapi.com/v1/forecast.json?key=e5b88cfc6deb4446b4c111428242412&q=alex&days=3&aqi=no&alerts=no"
 )
   .then(function (text) {
     return text.json();
